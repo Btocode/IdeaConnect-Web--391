@@ -33,8 +33,8 @@ const Sidebar = () => {
               <div className=" bg-gray-900 ">
                 <div className="px-6 pt-4">
                   <div className="flex items-center justify-between">
-                    <a
-                      href="/"
+                    <Link
+                      to="/notification"
                       className="bg-blue-600 p-1.5 rounded flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900 text-white"
                     ><svg
                       className="w-5 h-5 text-white stroke-current "
@@ -55,7 +55,7 @@ const Sidebar = () => {
                           strokeLinecap="round"
                           strokeLinejoin="round"
                         ></path></svg
-                      >Trending</a>
+                      >Notification</Link>
                   </div>
                 </div>
                 <div className="px-6 pt-4">

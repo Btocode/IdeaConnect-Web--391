@@ -1,11 +1,50 @@
-import React from 'react'
 import Post from '../components/TrendingPost';
 import Sidebar from '../components/TrendingSidebar'
 import Navbar from "../components/Navbar"
+import axios from 'axios'
+import React, { useState, useEffect } from 'react';
+import { Component } from 'react/cjs/react.development';
 
-const Trending = () => {
-  return (
-    <main className = "">
+
+
+
+class Trending extends Component {
+
+  state = {
+    ideas: [],
+  }
+
+  componentDidMount() {
+    axios.get('http://127.0.0.1:8000/api/token/ideas/')
+      .then(response => {
+        this.setState({ ideas: response.data })
+
+      })
+      .catch(error => {
+        console.log("Error in AppJs")
+      })
+  }
+  render() {
+
+    const trendingIdeas = (
+      <div>
+        {this.state.ideas.map(idea => {
+
+          return <div className="flex justify-center mt-5" key={idea.id}>
+            <Post name={idea.first_name + idea.last_name} description={idea.ideaDesc} title={idea.ideaTitle} tags={idea.ideaTags} upvotes={idea.upvotes.length} downvotes={idea.downvotes.length} suggestions={idea.suggestions} id={idea.ideaId} />
+          </div>
+        })
+        }
+      </div>
+    )
+
+  
+
+
+
+
+  return(
+    <main className = "" >
       
       <div className='sticky top-0'>
       <Navbar/>
@@ -19,33 +58,7 @@ const Trending = () => {
         <p className = "text-center tracking-widest text-lg mt-2 ">Showing results for  <span className = "text-downred tracking-widest">#overall </span> posts</p>
       
         <div className="posts w-full flex flex-col overflow-y-auto">
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
-          <div className= "flex justify-center mt-5">
-            <Post/>
-          </div>
+          {trendingIdeas}
         </div>
         </div>
       </div>
@@ -53,8 +66,9 @@ const Trending = () => {
 
     </main>
 
-
+  
   );
+}
 }
 
 export default Trending

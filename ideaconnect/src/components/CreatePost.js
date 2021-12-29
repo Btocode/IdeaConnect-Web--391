@@ -8,38 +8,37 @@ import Sidebar from './Sidebar';
 
 
 const CreatePost = () => {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
   const { id } = useContext(AuthContext)
   let uid = id['user_id']
 
-  console.log({uid})
   const [ideaTitle, setideaTitle] = useState('')
   const [ideaDesc, setideaDesc] = useState('')
   const [ideaTags, setideaTags] = useState('')
 
-  console.log(uid,ideaTags)
-  const postIdea = () => {
+  const postIdea = (e) => {
+    e.preventDefault()
+    
     if ((ideaTitle !== "") && (ideaDesc !== "") && (ideaTags !== "")) {
-      axios.post('http://127.0.0.1:8000/api/token/idea/',
+      
+      let response = axios.post('http://127.0.0.1:8000/api/token/ideas/',
         {
           "ideaTitle": ideaTitle,
           "ideaDesc": ideaDesc,
           "ideaTags": ideaTags,
-          "author": uid
+          "author": uid,
+          // 'upvotes':[uid],
+          // 'downvotes':[uid]
 
         }
-      )
-        .then(function (response) {
-          if (response.status === 200) {
+      ).then((response)=> {
+          if(response.status === 201){
             navigate("/")
-            console.log("Created")
-            alert("Idea Uploaded Successfully")
           }
-          else {
-            console.log("Error found")
-          }
-          console.log(response)
+      
+          
         })
+    
     }
     else {
       alert("Fields cannot be empty")
@@ -62,7 +61,7 @@ const CreatePost = () => {
         </aside>
         <div className="posts w-full flex flex-col ">
           <div className='post flex justify-center mt-5'>
-            <form onSubmit={postIdea} className="pcontainer w-10/12 min-h-full text-gray-700 shadow-lg flex flex-col ">
+            <form  onSubmit={postIdea} className="pcontainer w-10/12 min-h-full text-gray-700 shadow-lg flex flex-col ">
               <div className="content p-3 rounded-lg  bg-white">
                 {/* Topbar design */}
                 <div className="tpanel flex shadow p-1 rounded-lg">
@@ -72,7 +71,7 @@ const CreatePost = () => {
                     <p className="ml-3">Afsan Saeed</p>
                   </div>
                   <div className="rightitems flex justify-end w-1/2 mr-3">
-                    <input type="submit" value="Submit" className='bg-upgreen h-8 px-4 py-1 rounded-lg text-white ' />
+                    <input type="submit" value="Submit" className='bg-upgreen h-8 px-4 py-1 rounded-lg text-white '  />
                   </div>
                 </div>
                 {/* Top panel ends here */}

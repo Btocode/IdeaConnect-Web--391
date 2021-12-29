@@ -1,66 +1,44 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState,useEffect } from 'react'
 // import profile from '../images/dp.png'
 import {Link} from "react-router-dom"
 import AuthContext from '../context/AuthContext'
+import axios from 'axios'
 
 
 const Sidebar = () => {
-  const {logoutUser} = useContext(AuthContext)
+  const {logoutUser,id} = useContext(AuthContext)
+// getting user information
+const [email,setEmail] = useState("")
+  
+
+  let url = 'http://127.0.0.1:8000/api/token/profile/' + id.user_id + "/"
+  useEffect(()=>{
+    axios.get(url)
+    .then(response => {
+      // console.log(response.data)
+      setEmail(response.data.email)
+      return response.data.email
+      
+    }).then(json => {
+      // setProfile(json)
+
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+  },[])
+
+// getting user information
+
+
+
+
   return (
     <div className="px-6 bg-gray-900 text-lg sticky top-0">
       <div className="flex justify-start min-h-screen bg-gray-200">
         <div className=" bg-gray-900 ">
-          <div className="px-6 pt-4">
-            <div className="flex items-center justify-between">
-              <a
-                href="/"
-                className="bg-blue-600 p-1.5 rounded flex items-center justify-center focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-              ><svg
-                className="w-5 h-5 text-white stroke-current"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                  <path
-                    d="M12 4.75L19.25 9L12 13.25L4.75 9L12 4.75Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M9.25 12L4.75 15L12 19.25L19.25 15L14.6722 12"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path></svg
-                ></a>
-              <button
-                className="flex items-center justify-center p-0.5 rounded bg-gray-800 focus:outline-none focus:ring-1 focus:ring-gray-500"
-              >
-                <svg
-                  className="w-3 h-3 text-gray-300 stroke-current"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M10.25 6.75L4.75 12L10.25 17.25"
-                  ></path>
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19.25 12H5"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
+
           <div className="px-6 pt-4">
             <div className="relative">
               <div
@@ -93,7 +71,7 @@ const Sidebar = () => {
           <div className="px-6 pt-4">
             <ul className="flex flex-col space-y-2">
             <Link to = "/create">
-            <li className="relative hover:text-downred hover:bg-blue-bg text-cleanwhite focus-within:text-white bg-upgreen px-2 py-2 rounded-md cursor-pointer">
+            <li className="relative hover:bg-blue-bg text-cleanwhite focus-within:text-white bg-upgreen px-2 py-2 rounded-md cursor-pointer">
             <button>Upload a new Idea</button>
             </li>
             </Link>
@@ -479,7 +457,7 @@ const Sidebar = () => {
               <div className="flex flex-col pl-3">
                 <div className="text-sm text-white">Logout</div>
                 <span className="text-xs text-gray-400 font-light tracking-tight">
-                  afsansaeed@gmail.com
+                  {email}
                 </span>
               </div>
             </div>

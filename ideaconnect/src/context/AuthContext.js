@@ -1,7 +1,7 @@
 import { createContext,useState,} from 'react';
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
-
+import axios from 'axios'
 const AuthContext = createContext()
 
 export default AuthContext;
@@ -12,12 +12,42 @@ export const AuthProvider = ({children}) =>{
 
   
   let [authtoken, setAuthToken] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')):null)
+
+  let [profile,setProfile] = useState([]);
+
+  // let [profile, setProfile] = useState(()=> localStorage.
+  // getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')):null)
+  
   let [id, setId] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')):null)
   // let [username, setUsername] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')):null)
   // let [loading, setLoading] =useState(true)
-  const uid = ""
+  // const uid = ""
 
   const navigate = useNavigate()
+
+// get user profile infos
+//   let url = 'http://127.0.0.1:8000/api/token/profile/' + id.user_id + "/"
+//   let userProfileInfo =()=>{
+//     axios.get(url)
+//     .then(response => {
+//       // console.log(response.data)
+//       return response.data
+      
+//     }).then(json => {
+//       setProfile(json)
+//       console.log(json, "This is from Auth")
+
+//     })
+//     .catch(error => {
+//       console.log(error)
+//     })
+
+// }
+
+// get user profile infos
+
+
+
 
   let loginUser = async (e ) =>{
     e.preventDefault()
@@ -40,12 +70,15 @@ export const AuthProvider = ({children}) =>{
         // setUsername(jwt_decode(data.access).username)
         localStorage.setItem('authTokens', JSON.stringify(data))
         navigate('/')
-        
+
       }
       else{
         alert(data.detail)
       }
   }
+
+
+
   // console.log(username.username)
   let logoutUser = () =>{
     setAuthToken = null
@@ -56,46 +89,22 @@ export const AuthProvider = ({children}) =>{
   }
 
 
-  // This part will implement later
-  // let updateToken = async ()=>{
-  //   let response = await fetch("http://127.0.0.1:8000/auth/jwt/refresh/",{
-  //       method : "POST",
+  // const downvoteGiven =()=>{
 
-  //       headers:{
-  //         "Content-Type":'application/json',
-          
-  //       },
-  //       body :JSON.stringify({'refresh': authtoken.refresh}),
-  //     })
-  //     let data = await response.json()
-  //     if(response.status === 200){
-  //       setAuthToken(data)
-  //       setId(jwt_decode(data.access))
-  //       localStorage.setItem('authTokens', JSON.stringify(data))
-  //     }
-  //     else{
-  //       // logoutUser()
-  //     }
   // }
-
-  // let uid = username['user_id']
-  // console.log(temp[username])
+ 
   let contextData = {
       id:id,
+      authtoken:authtoken,
+      // upvoteGiven:upvoteGiven,
+      // downvoteGiven:downvoteGiven,
       // uid,
       loginUser : loginUser,
       logoutUser:logoutUser
       
   }
 
-  // useEffect(()=>{
-  //   let interval = setInterval(()=>{
-  //     if(authtoken){
-  //       updateToken()
-  //     }
-  //   },2000)
-  //   return ()=> clearInterval(interval)
-  // },[authtoken,loading])
+ 
 
 
     return (

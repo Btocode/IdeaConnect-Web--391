@@ -2,7 +2,7 @@ import React from 'react'
 import Notifications from "../components/Notifications"
 import {Link} from "react-router-dom"
 import Navbar from '../components/Navbar'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/NotificationSidebar'
 
 const Notification = () => {
   // return (
@@ -15,7 +15,7 @@ const Notification = () => {
   // )
   return (
     <main className="flex flex-col">
-      <div className="navbar w-full sticky top-0 z-50 ">
+      <div className="navbar w-full sticky top-0 ">
         <Navbar page = "Notification"/>
       </div>
 

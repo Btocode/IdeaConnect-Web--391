@@ -31,25 +31,34 @@ class UserSerializer(serializers.ModelSerializer):
 #     fields = '__all__'
 class IdeaSerializer(serializers.ModelSerializer):
     
-    
     class Meta:
         model = Idea
-        fields = ('ideaId','ideaTitle','ideaDesc','ideaTags','author','upvotes','downvotes','suggestions')
+        fields = ('ideaId','ideaTitle','ideaDesc','ideaTags','author','upvotes','downvotes','suggestions','postingTime')
     
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['voteCounter'] = instance.upvotes.count() - instance.downvotes.count()
         representation['first_name'] = instance.author.first_name
         representation['last_name'] = instance.author.last_name
+        # representation['picture'] = instance.author.profile_picture
         return representation
 
 
-# class UpvoteSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Upvote
-#         fields = ['id']
+class UpvoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Idea
+        fields = ['upvotes','downvotes','pk']
 
-# class ProfileSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = UserInfo
-#         fields = ('profile_picture')
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserInfo
+        fields = ('user','profile_picture', 'gender', 'age','jobTitle', 'programming', 'languageKnown','linkedIn','resume','github',)
+
+    def to_representation(self, instance):
+            representation = super().to_representation(instance)
+            representation['first_name'] = instance.user.first_name
+            representation['last_name'] = instance.user.last_name
+            representation['email'] = instance.user.email
+            representation['username'] = instance.user.username
+            return representation
+

@@ -15,7 +15,7 @@ from django.contrib.auth import get_user_model # If used custom user model
 from base.models import Idea,UserInfo
 from django.contrib.auth.models import User
 
-from .serializers import UserSerializer,IdeaSerializer
+from .serializers import UserSerializer,IdeaSerializer,ProfileSerializer,UpvoteSerializer
 
 
 
@@ -67,13 +67,6 @@ class ManipulateUserView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,Dest
         return self.destroy(request, *args, **kwargs)
 
 
-# # @api_view(['GET'])
-# class CreateIdeaView(APIView):
-#     serializer_class = CreateIdeaSerializer()
-#     def get_queryset(self):
-#       ideas = Idea.objects.all()
-#       return ideas
-
 class IdeaView(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset = Idea.objects.all()
     serializer_class = IdeaSerializer
@@ -107,11 +100,32 @@ class IdeaView2(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelM
 #     def perform_create(self, serializer):
 #         serializer.save(voter = self.request.user,post = Idea.objects.get(pk = self.kwargs['pk']))
 
-class ProfileView(View):
-    def get(self, request, pk,*args,**kwargs):
-        profile = UserInfo.objects.get(pk = pk)
-        user = profile.user
-        ideas = Idea.objects.filter(author = user).order_by('-postingTime')
+# class ProfileView(View):
+#     def get(self, request, pk,*args,**kwargs):
+#         profile = UserInfo.objects.get(pk = pk)
+#         user = profile.user
+#         ideas = Idea.objects.filter(author = user).order_by('-postingTime')
+
+class UserProfileView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+    queryset = UserInfo.objects.all()
+    serializer_class = ProfileSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+class ProfilesView(GenericAPIView,ListModelMixin,CreateModelMixin):
+    queryset = UserInfo.objects.all()
+    serializer_class = ProfileSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
 
 
 # class UpvoteView1(GenericAPIView,ListModelMixin,CreateModelMixin):
@@ -122,3 +136,14 @@ class ProfileView(View):
 #     #     return self.list(request, *args, **kwargs)
 #     def post(self, request, *args, **kwargs):
 #         return self.create(request, *args, **kwargs)
+
+class UpvoteView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+    queryset = Idea.objects.all()
+    serializer_class = UpvoteSerializer
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)

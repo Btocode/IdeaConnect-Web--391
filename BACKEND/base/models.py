@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class UserInfo(models.Model):
-  user = models.OneToOneField(User,on_delete=models.CASCADE)
+  user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
   GENDER = (
     ('Male','Male'),
     ('Female','Female'),
@@ -20,7 +20,7 @@ class UserInfo(models.Model):
   github = models.CharField(max_length = 200, null=True)
 
   def __str__(self):
-    return self.user.first_name
+    return self.user.username
 
 class Idea(models.Model):
   ideaId = models.AutoField(primary_key=True)
