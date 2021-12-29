@@ -33,6 +33,7 @@ class Idea(models.Model):
   postingTime = models.DateTimeField(auto_now_add=True, null=True)
   upvotes = models.ManyToManyField(User, related_name='tempUser1', blank = True, )
   downvotes = models.ManyToManyField(User, related_name='tempUser2', blank = True, )
+  suggestions = models.ManyToManyField(User, through = 'SuggestionClass', blank = True, related_name = 'given_suggestion')
 
   author = models.ForeignKey(User, on_delete=models.CASCADE)
   # comment = models.ForeignKey(Suggestion,on_delete=models.CASCADE)
@@ -41,3 +42,11 @@ class Idea(models.Model):
   
   class Meta:
         ordering = ['ideaTags']
+
+class SuggestionClass(models.Model):
+  user = models.ForeignKey(User, on_delete = models.CASCADE)
+  idea = models.ForeignKey(Idea, on_delete = models.CASCADE)
+  content = models.CharField(max_length = 150,null = True)
+
+  def __str__(self):
+    return self.user.username

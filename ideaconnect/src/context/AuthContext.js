@@ -1,4 +1,4 @@
-import { createContext,useState,useEffect } from 'react';
+import { createContext,useState,} from 'react';
 import jwt_decode from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ export const AuthProvider = ({children}) =>{
   
   let [authtoken, setAuthToken] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')):null)
   let [id, setId] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')):null)
-  let [username, setUsername] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')):null)
+  // let [username, setUsername] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')):null)
   // let [loading, setLoading] =useState(true)
   const uid = ""
 
@@ -37,7 +37,7 @@ export const AuthProvider = ({children}) =>{
       if(response.status === 200){
         setAuthToken(data)
         setId(jwt_decode(data.access))
-        setUsername(jwt_decode(data.access).username)
+        // setUsername(jwt_decode(data.access).username)
         localStorage.setItem('authTokens', JSON.stringify(data))
         navigate('/')
         
@@ -57,26 +57,26 @@ export const AuthProvider = ({children}) =>{
 
 
   // This part will implement later
-  let updateToken = async ()=>{
-    let response = await fetch("http://127.0.0.1:8000/auth/jwt/refresh/",{
-        method : "POST",
+  // let updateToken = async ()=>{
+  //   let response = await fetch("http://127.0.0.1:8000/auth/jwt/refresh/",{
+  //       method : "POST",
 
-        headers:{
-          "Content-Type":'application/json',
+  //       headers:{
+  //         "Content-Type":'application/json',
           
-        },
-        body :JSON.stringify({'refresh': authtoken.refresh}),
-      })
-      let data = await response.json()
-      if(response.status === 200){
-        setAuthToken(data)
-        setId(jwt_decode(data.access))
-        localStorage.setItem('authTokens', JSON.stringify(data))
-      }
-      else{
-        // logoutUser()
-      }
-  }
+  //       },
+  //       body :JSON.stringify({'refresh': authtoken.refresh}),
+  //     })
+  //     let data = await response.json()
+  //     if(response.status === 200){
+  //       setAuthToken(data)
+  //       setId(jwt_decode(data.access))
+  //       localStorage.setItem('authTokens', JSON.stringify(data))
+  //     }
+  //     else{
+  //       // logoutUser()
+  //     }
+  // }
 
   // let uid = username['user_id']
   // console.log(temp[username])

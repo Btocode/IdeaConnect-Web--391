@@ -1,6 +1,6 @@
 import React,{useContext} from 'react'
 import wave1 from "../images/wave.svg"
-import { useState } from 'react'
+// import { useState } from 'react'
 import wave2 from "../images/wave2.svg"
 import { Link } from "react-router-dom"
 import AuthContext from '../context/AuthContext'

@@ -9,7 +9,7 @@ import UserProfile from './pages/UserProfile';
 import ViewPost from './pages/ViewPost';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Navbar from './components/Navbar';
+// import Navbar from './components/Navbar';
 import CreatePost from './components/CreatePost';
 // import Sidebar from './components/Sidebar';
 

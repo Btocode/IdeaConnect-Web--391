@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model # If used custom user model
 from django.contrib.auth.models import User # If used custom user model
-from base.models import UserInfo,Idea
+from base.models import UserInfo,Idea,SuggestionClass
 UserModel = get_user_model()
 
 
@@ -34,15 +34,13 @@ class IdeaSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Idea
-        fields = ('ideaId','ideaTitle','ideaDesc','ideaTags','author','upvotes','downvotes')
+        fields = ('ideaId','ideaTitle','ideaDesc','ideaTags','author','upvotes','downvotes','suggestions')
     
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['voteCounter'] = instance.upvotes.count() - instance.downvotes.count()
         representation['first_name'] = instance.author.first_name
         representation['last_name'] = instance.author.last_name
-        
-
         return representation
 
 

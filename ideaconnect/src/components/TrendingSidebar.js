@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react/cjs/react.development'
 import AuthContext from '../context/AuthContext'
-import profile from '../images/dp.png'
+// import profile from '../images/dp.png'
 
 const Sidebar = () => {
   const {logoutUser} = useContext(AuthContext)

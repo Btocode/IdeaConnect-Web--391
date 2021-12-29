@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import profile from '../images/dp.png'
+// import profile from '../images/dp.png'
 import {Link} from "react-router-dom"
 import AuthContext from '../context/AuthContext'
 
@@ -506,9 +506,6 @@ const Sidebar = () => {
   )
 }
 
-function clicked() {
-  console.log("Hello");
-}
 
 export default Sidebar
 
