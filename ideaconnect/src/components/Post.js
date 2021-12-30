@@ -213,11 +213,13 @@ const Post = (props) => {
         }
         <div className="downpanel flex w-full flex-col text-cleanwhite text-lg">
           <div className="votecounter flex justify-start p-2 w-full">
-            <p className="btn1 bg-upgreen px-2 py-1 mr-3 rounded-lg text-cleanwhite"> {props.upvotes} upvotes</p>
-            <p className="btn2 bg-downred px-2 py-1 rounded-lg"> {props.downvotes} downvotes</p>
+            {/* <p className="btn1  px-2 py-1 mr-3 rounded-lg text-green italic"> {props.vote} upvotes</p> */}
+            {/* <p className="btn2 bg-downred px-2 py-1 rounded-lg"> {props.downvotes} downvotes</p> */}
           </div>
           <div className="votebuttons flex justify-evenly p-2 w-full">
             <button className="btn1 bg-upgreen px-6 py-1 rounded-lg" onClick={upvoteHandler}> Upvote</button>
+            <p className="btn1  px-2 py-1 mr-3 rounded-lg text-green italic"> {props.upvotes} UpVotes</p><br />
+            <p className="btn1  px-2 py-1 mr-3 rounded-lg text-green italic"> {props.downvotes} DownVotes</p>
             <button className="btn2 bg-downred px-6 py-1 rounded-lg" onClick={downvoteHandler} > Downvote</button>
           </div>
         </div>

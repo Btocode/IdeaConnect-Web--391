@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
 
         user = UserModel.objects.create_user(
-            first_name = ['first_name'],
+            first_name = validated_data['first_name'],
             last_name = validated_data['last_name'],
             username=validated_data['username'],
             email = validated_data['email'],
@@ -52,7 +52,7 @@ class UpvoteSerializer(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo
-        fields = ('user','profile_picture', 'gender', 'age','jobTitle', 'programming', 'languageKnown','linkedIn','resume','github',)
+        fields = ('user','profile_picture', 'gender', 'age','jobTitle', 'programming', 'languageKnown','linkedIn','resume','github','bio')
 
     def to_representation(self, instance):
             representation = super().to_representation(instance)

@@ -58,7 +58,7 @@ class App extends Component {
         {this.state.idea.map(idea =>{
         
         return <div className= "flex justify-center mt-5" key={idea.ideaId}>
-          <Post name = { idea.first_name + idea.last_name} description = {idea.ideaDesc} title = {idea.ideaTitle} tags = {idea.ideaTags} upvotes = {idea.upvotes.length} downvotes = {idea.downvotes.length} suggestions = {idea.suggestions} id = {idea.ideaId} time = {idea.postingTime} />
+          <Post name = { idea.first_name + idea.last_name} description = {idea.ideaDesc} title = {idea.ideaTitle} tags = {idea.ideaTags} upvotes = {idea.upvotes.length} downvotes = {idea.downvotes.length} suggestions = {idea.suggestions} id = {idea.ideaId} time = {idea.postingTime} vote = {idea.voteCounter} />
         </div>
       })
       }

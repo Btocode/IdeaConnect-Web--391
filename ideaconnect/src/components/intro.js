@@ -1,7 +1,7 @@
 import React from 'react'
 import profile from '../images/dp.png'
 
-const intro = () => {
+const intro = (props) => {
   return (
     <div>
 
@@ -9,18 +9,18 @@ const intro = () => {
         <div className="w-3/12 h-25">
           <img
             className="rounded-full h-20 w-20"
-            src={profile}
+            src={"props.profile_picture"}
             alt=""
           />
         </div>
         <div className="w-8/12">
-          <h1 className="text-lg font-semibold text-white">Afsan Saeed</h1>
-          <p className="text-gray-400">Studies at Bracu</p>
+          <h1 className="text-lg font-semibold text-white">{props.name}</h1>
+          <p className="text-gray-400">Please update this field</p>
         </div>
       </div>
       <div className="middled flex justify-around mt-5">
         <div className="w-11/12 bg-white rounded-md p-3 text-gray-600 text-left">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere vel quam ullam error a iusto libero molestias assumenda, laborum commodi.</p>
+          <p>Please update this field</p>
         </div>
       </div>
       <div className="bottomd flex w-full justify-around text-center mt-8">

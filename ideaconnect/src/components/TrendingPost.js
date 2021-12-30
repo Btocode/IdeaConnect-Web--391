@@ -5,6 +5,7 @@ import dp from "../images/dp.png";
 
 const Post = (props) => {
   let taglist = props.tags.split(" ")
+  console.log(props.id);
   return (
     <div className="pcontainer w-11/12 min-h-full text-gray-700  cmd1:flex shadow-lg">
       <div className="content p-3 lg:w-9/12 rounded-lg cmd1:w-full bg-white">
@@ -56,8 +57,8 @@ const Post = (props) => {
             <p className="btn2 bg-downred px-2 py-1 rounded-lg"> {props.downvotes} downvotes</p>
           </div>
           <div className="viewButton w-full mt-5">
-            <Link to = '/viewpost' className = "">
-            <button className=" w-full shadow-lg px-2 py-1 rounded-xl hover:bg-upgreen">View this Idea</button>
+            <Link to = {'/viewpost/idea='+props.id+"/"} className = "">
+            <button  className=" w-full shadow-lg px-2 py-1 rounded-xl hover:bg-upgreen">View this Idea</button>
             </Link>
             
           </div>

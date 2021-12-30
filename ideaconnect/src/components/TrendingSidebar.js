@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [email,setEmail] = useState("")
   
 
-  let url = 'http://127.0.0.1:8000/api/token/profile/' + id.user_id + "/"
+  let url = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url)
     .then(response => {

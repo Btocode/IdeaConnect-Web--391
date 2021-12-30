@@ -12,12 +12,13 @@ class UserInfo(models.Model):
   profile_picture = models.ImageField(upload_to = 'uploads/profile_pictures',default = 'uploads/profile_pictures/default.png',blank = True,)
   gender = models.CharField(max_length = 10, null=True,choices=GENDER)
   age = models.IntegerField(null=True)
-  jobTitle = models.CharField(max_length = 50, null=True)
+  jobTitle = models.CharField(max_length = 50, null=True,default="please update jobtitle")
   programming = models.CharField(max_length = 200, null=True)
   languageKnown = models.CharField(max_length = 200, null=True)
   linkedIn = models.CharField(max_length = 200, null=True)
   resume = models.CharField(max_length = 200, null=True)
   github = models.CharField(max_length = 200, null=True)
+  bio = models.CharField(max_length=300,null = True,default="Tell us something about you")
 
   def __str__(self):
     return self.user.username
@@ -50,3 +51,6 @@ class SuggestionClass(models.Model):
 
   def __str__(self):
     return self.user.username
+
+
+

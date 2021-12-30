@@ -28,7 +28,7 @@ ReactDOM.render(
         <Route element={<PrivateRoute />} path="/" exact>
           <Route path="/" element={<App />} />
           <Route path="/trending" element={<Trending />}/>
-          <Route path="/viewpost" element={<ViewPost />} />
+          <Route path="/viewpost/" element={<ViewPost />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/create" element={<CreatePost />} />

@@ -19,6 +19,4 @@ urlpatterns = [
     path('token/profiles/',ProfilesView.as_view()),
     path('token/idea/upvote/<int:pk>/',UpvoteView.as_view()),
     
-
-
 ]
