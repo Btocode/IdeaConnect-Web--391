@@ -19,6 +19,7 @@ class UserInfo(models.Model):
   resume = models.CharField(max_length = 200, null=True)
   github = models.CharField(max_length = 200, null=True)
   bio = models.CharField(max_length=300,null = True,default="Tell us something about you")
+  
 
   def __str__(self):
     return self.user.username

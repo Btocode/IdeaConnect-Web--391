@@ -73,7 +73,7 @@ const Signup = () => {
               </select>
             </div> */}
             <div className=" w-full justify-center items-center mt-3">
-              <button className = "w-2/3 bg-login-bg h-10 rounded-lg text-xl tracking-wider cursor-pointer"  onClick={registrationRequest} >Sign Up</button>
+              <button className = "w-2/3 bg-login-bg h-10 rounded-lg text-xl tracking-wider cursor-pointer"  onClick={registrationRequest} >Next</button>
               
             </div>
           </div>

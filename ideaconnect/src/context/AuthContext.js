@@ -100,7 +100,7 @@ export const AuthProvider = ({children}) =>{
       // downvoteGiven:downvoteGiven,
       // uid,
       loginUser : loginUser,
-      logoutUser:logoutUser
+      logoutUser:logoutUser,
       
   }
 

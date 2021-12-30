@@ -71,28 +71,28 @@ const Post = (props) => {
         // console.log("something else");
       }
     }
-    
+
     // Starting 
-    let vote = async (e ) =>{
+    let vote = async (e) => {
       // e.preventDefault()
       // console.log(e.target.email.value)
-      console.log(JSON.stringify({'upvotes':upvotes[0],'downvotes':downvotes[0], 'pk':props.id}));
-        let response = await fetch(url,{
-          method : "PUT",
-  
-          headers:{
-            "Content-Type":'application/json',
-            
-          },
-          body : JSON.stringify({'upvotes':upvotes[0],'downvotes':downvotes[0], 'pk':props.id}),
-        })
-        let data = await response.json()
-        // console.log(upvotes[0]," Data ",downvotes[0])
-        // console.log(data);
-       
-      }
-      vote()
-        // console.log("data:", data)
+      console.log(JSON.stringify({ 'upvotes': upvotes[0], 'downvotes': downvotes[0], 'pk': props.id }));
+      let response = await fetch(url, {
+        method: "PUT",
+
+        headers: {
+          "Content-Type": 'application/json',
+
+        },
+        body: JSON.stringify({ 'upvotes': upvotes[0], 'downvotes': downvotes[0], 'pk': props.id }),
+      })
+      let data = await response.json()
+      // console.log(upvotes[0]," Data ",downvotes[0])
+      // console.log(data);
+
+    }
+    vote()
+    // console.log("data:", data)
     // Ending
 
 
@@ -131,27 +131,27 @@ const Post = (props) => {
         console.log("something else");
       }
     }
-    
+
     // Starting 
-    let downVote = async (e ) =>{
+    let downVote = async (e) => {
       // e.preventDefault()
       // console.log(e.target.email.value)
-      console.log(JSON.stringify({'upvotes':upvotes[0],'downvotes':downvotes[0], 'pk':props.id}));
-        let response = await fetch(url,{
-          method : "PUT",
-  
-          headers:{
-            "Content-Type":'application/json',
-            
-          },
-          body : JSON.stringify({'upvotes':upvotes[0],'downvotes':downvotes[0], 'pk':props.id}),
-        })
-        let data = await response.json()
-  
-       
-      }
-      downVote()
-        // console.log("data:", data)
+      console.log(JSON.stringify({ 'upvotes': upvotes[0], 'downvotes': downvotes[0], 'pk': props.id }));
+      let response = await fetch(url, {
+        method: "PUT",
+
+        headers: {
+          "Content-Type": 'application/json',
+
+        },
+        body: JSON.stringify({ 'upvotes': upvotes[0], 'downvotes': downvotes[0], 'pk': props.id }),
+      })
+      let data = await response.json()
+
+
+    }
+    downVote()
+    // console.log("data:", data)
     // Ending
 
 
@@ -179,7 +179,7 @@ const Post = (props) => {
             <img className="h-10 w-10 rounded-full" src={dp} alt="" />
 
             <p className="ml-3">{props.name}</p>
-            <p className='ml-4'>{(time[1].split(".")[0])+ " " +time[0]}</p>
+            <p className='ml-4'>{(time[1].split(".")[0]) + " " + time[0]}</p>
           </div>
           <div className="rightitems flex justify-end w-1/2 mr-3">
             <button className="btn1 mr-4 px-3 h-8 shadow rounded-xl hover:bg-bgnoti">Collab</button>

@@ -15,6 +15,7 @@ import CreatePost from './components/CreatePost';
 
 import PrivateRoute from './utils/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
+import Info from './pages/Info';
 
 ReactDOM.render(
 
@@ -28,10 +29,11 @@ ReactDOM.render(
         <Route element={<PrivateRoute />} path="/" exact>
           <Route path="/" element={<App />} />
           <Route path="/trending" element={<Trending />}/>
-          <Route path="/viewpost/" element={<ViewPost />} />
+          <Route path="/viewpost" element={<ViewPost />} />
           <Route path="/notification" element={<Notification />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/create" element={<CreatePost />} />
+          <Route path="/info" element={<Info />} />
         </Route>
       </Routes>
       <Routes>

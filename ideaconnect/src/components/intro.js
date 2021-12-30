@@ -1,5 +1,7 @@
 import React from 'react'
 import profile from '../images/dp.png'
+import {Link} from 'react-router-dom';
+
 
 const intro = (props) => {
   return (
@@ -9,18 +11,21 @@ const intro = (props) => {
         <div className="w-3/12 h-25">
           <img
             className="rounded-full h-20 w-20"
-            src={"props.profile_picture"}
+            src={profile}
             alt=""
           />
         </div>
-        <div className="w-8/12">
+        <div className="w-9/12">
           <h1 className="text-lg font-semibold text-white">{props.name}</h1>
-          <p className="text-gray-400">Please update this field</p>
+          <p className="text-gray-400">{props.job}</p>
+        </div>
+        <div className="w-2/12 text-bgnoti text-right">
+        <Link to = "/info">Add data</Link>
         </div>
       </div>
       <div className="middled flex justify-around mt-5">
         <div className="w-11/12 bg-white rounded-md p-3 text-gray-600 text-left">
-          <p>Please update this field</p>
+          <p>{props.bio}</p>
         </div>
       </div>
       <div className="bottomd flex w-full justify-around text-center mt-8">
