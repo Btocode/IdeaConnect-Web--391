@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import wave1 from "../images/wave.svg";
 import wave2 from "../images/wave2.svg";
+import REACT_APP_BASE_URL from "../utils/URLs"
+
 
 const Signup = () => {
   const navigate = useNavigate();

@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import REACT_APP_BASE_URL from "../utils/URLs"
+
 
 
 const ViewPost = () => {

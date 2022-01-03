@@ -3,6 +3,8 @@ import { Component } from 'react/cjs/react.development';
 import Navbar from "../components/Navbar";
 import Post from '../components/TrendingPost';
 import Sidebar from '../components/TrendingSidebar';
+import REACT_APP_BASE_URL from "../utils/URLs"
+
 
 
 

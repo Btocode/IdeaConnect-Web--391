@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 // import profile from '../images/dp.png'
 import { Link } from "react-router-dom"
 import AuthContext from '../context/AuthContext'
+import REACT_APP_BASE_URL from "../utils/URLs"
 
 
 const Sidebar = () => {
