@@ -5,6 +5,8 @@ import AuthContext from '../context/AuthContext';
 import dp from "../images/dp.png";
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
+import REACT_APP_BASE_URL from "../utils/URLs";
+
 
 
 const CreatePost = () => {
@@ -21,7 +23,7 @@ const CreatePost = () => {
     
     if ((ideaTitle !== "") && (ideaDesc !== "") && (ideaTags !== "")) {
       
-      let response = axios.post(process.env.REACT_APP_BASE_URL + 'token/ideas/',
+      let response = axios.post(REACT_APP_BASE_URL + 'token/ideas/',
         {
           "ideaTitle": ideaTitle,
           "ideaDesc": ideaDesc,
@@ -48,7 +50,7 @@ const CreatePost = () => {
 
   const [profile,setProfile] = useState([])
   
-  let url1 = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
+  let url1 = REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url1)
     .then(response => {

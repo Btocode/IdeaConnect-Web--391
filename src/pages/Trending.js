@@ -14,7 +14,7 @@ class Trending extends Component {
   }
 
   componentDidMount() {
-    axios.get(process.env.REACT_APP_BASE_URL + 'token/ideas/')
+    axios.get(REACT_APP_BASE_URL + 'token/ideas/')
       .then(response => {
         this.setState({ ideas: response.data })
 

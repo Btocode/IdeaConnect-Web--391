@@ -17,7 +17,7 @@ const ViewPost = () => {
 
 
   // const { id } = useContext(AuthContext)
-  let url = process.env.REACT_APP_BASE_URL + 'token/idea/' + id + "/"
+  let url = REACT_APP_BASE_URL + 'token/idea/' + id + "/"
   // console.log(url);
   useEffect(() => {
     axios.get(url)

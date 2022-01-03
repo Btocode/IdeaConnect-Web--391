@@ -15,7 +15,7 @@ const ProfielView = ()=> {
 
   const {id} = useParams()
   console.log(id);
-  let url = process.env.REACT_APP_BASE_URL + 'token/profile/' + id + "/"
+  let url = REACT_APP_BASE_URL + 'token/profile/' + id + "/"
   console.log(url);
   useEffect(()=>{
     axios.get(url)
@@ -36,7 +36,7 @@ const ProfielView = ()=> {
 
   const [profile,setProfile] = useState([])
   
-  let url1 = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id + "/"
+  let url1 = REACT_APP_BASE_URL + 'token/manipulate/' + id + "/"
   useEffect(()=>{
     axios.get(url1)
     .then(response => {

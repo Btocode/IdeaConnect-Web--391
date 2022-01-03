@@ -15,7 +15,7 @@ const Navbar = (props) => {
   const {id} = useContext(AuthContext)
   const [firstName,setFirstName] = useState("")
   const [lastName,setLastName] = useState("")
-  let url = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
+  let url = REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url)
     .then(response => {

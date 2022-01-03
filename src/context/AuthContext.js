@@ -25,7 +25,7 @@ export const AuthProvider = ({children}) =>{
   const navigate = useNavigate()
 
 // get user profile infos
-//   let url = process.env.REACT_APP_BASE_URL + 'token/profile/' + id.user_id + "/"
+//   let url = REACT_APP_BASE_URL + 'token/profile/' + id.user_id + "/"
 //   let userProfileInfo =()=>{
 //     axios.get(url)
 //     .then(response => {
@@ -51,7 +51,7 @@ export const AuthProvider = ({children}) =>{
   let loginUser = async (e ) =>{
     e.preventDefault()
     // console.log(e.target.email.value)
-      let response = await fetch(process.env.REACT_APP_BASE_URL + "token/",{
+      let response = await fetch(REACT_APP_BASE_URL + "token/",{
         method : "POST",
 
         headers:{

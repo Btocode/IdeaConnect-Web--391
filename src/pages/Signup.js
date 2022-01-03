@@ -19,7 +19,7 @@ const Signup = () => {
     if ((username !== "") &&  (password1 !== "") &&  (password2 !== "")){
       if(password1 === password2){
         // const axios = require('axios')
-        axios.post(process.env.REACT_APP_BASE_URL + 'token/create/',
+        axios.post(REACT_APP_BASE_URL + 'token/create/',
         {
          
           "first_name": firstName,

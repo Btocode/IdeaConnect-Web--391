@@ -5,6 +5,7 @@ import { Component } from 'react';
 import Navbar from './components/Navbar';
 import Post from './components/Post';
 import Sidebar from './components/Sidebar';
+import REACT_APP_BASE_URL from "./utils/URLs"
 // import Login from './pages/Login'
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(process.env.REACT_APP_BASE_URL + 'token/ideas/')
+    axios.get(REACT_APP_BASE_URL + 'token/ideas/')
       .then(response => {
         this.setState({ idea: response.data })
 

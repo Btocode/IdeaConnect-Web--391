@@ -10,7 +10,7 @@ const Sidebar = () => {
   const [email,setEmail] = useState("")
   
 
-  let url = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
+  let url = REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url)
     .then(response => {
