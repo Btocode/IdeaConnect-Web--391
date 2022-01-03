@@ -26,7 +26,7 @@ class App extends Component {
       })
   }
 
-
+  
   render() {
     // let homepage = null
     // // let createPost = <CreatePost/>
@@ -47,6 +47,7 @@ class App extends Component {
     //     </div>
     //   )
 
+    // console.log(this.state.idea[0]);
 
     const homepage = (
       
@@ -58,7 +59,7 @@ class App extends Component {
         {this.state.idea.map(idea =>{
         
         return <div className= "flex justify-center mt-5" key={idea.ideaId}>
-          <Post name = { idea.first_name + idea.last_name} description = {idea.ideaDesc} title = {idea.ideaTitle} tags = {idea.ideaTags} upvotes = {idea.upvotes.length} downvotes = {idea.downvotes.length} suggestions = {idea.suggestions} id = {idea.ideaId} time = {idea.postingTime} vote = {idea.voteCounter} />
+          <Post name = { idea.first_name + idea.last_name} description = {idea.ideaDesc} title = {idea.ideaTitle} tags = {idea.ideaTags} upvotes = {idea.upvotes.length} downvotes = {idea.downvotes.length} suggestions = {idea.suggestions} id = {idea.ideaId} time = {idea.postingTime} vote = {idea.voteCounter} author = {idea.author} />
         </div>
       })
       }

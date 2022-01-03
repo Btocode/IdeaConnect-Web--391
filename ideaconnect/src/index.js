@@ -7,6 +7,7 @@ import Notification from './pages/Notification';
 import Trending from './pages/Trending';
 import UserProfile from './pages/UserProfile';
 import ViewPost from './pages/ViewPost';
+import ViewProfile from './pages/ProfileView';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 // import Navbar from './components/Navbar';
@@ -34,6 +35,7 @@ ReactDOM.render(
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/create" element={<CreatePost />} />
           <Route path="/info" element={<Info />} />
+          <Route path="/viewprofile/:id" element={<ViewProfile />} />
         </Route>
       </Routes>
       <Routes>

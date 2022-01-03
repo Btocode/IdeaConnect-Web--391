@@ -3,7 +3,7 @@ import AuthContext from '../context/AuthContext';
 // import Comment from './Comment';
 import dp from "../images/dp.png";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 
 const Post = (props) => {
@@ -21,6 +21,10 @@ const Post = (props) => {
   const downvotes = []
 
   let url = ""
+
+  const handleNavigate =() => {
+    navigate(`/viewprofile/${props.author}`);
+  }
 
   useEffect(() => {
     url = 'http://127.0.0.1:8000/api/token/idea/upvote/' + props.id + "/"
@@ -177,8 +181,11 @@ const Post = (props) => {
         <div className="tpanel flex shadow p-1 rounded-lg">
           <div className="leftitems flex items-center w-1/2 ">
             <img className="h-10 w-10 rounded-full" src={dp} alt="" />
-
-            <p className="ml-3">{props.name}</p>
+            
+            <button onClick={handleNavigate}><p className="ml-3" >{props.name}</p></button>
+           
+            
+            
             <p className='ml-4'>{(time[1].split(".")[0]) + " " + time[0]}</p>
           </div>
           <div className="rightitems flex justify-end w-1/2 mr-3">
