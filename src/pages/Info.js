@@ -22,7 +22,7 @@ const Info = () => {
   const addInfo = () => {
 
       // const axios = require('axios')
-      let url = "http://127.0.0.1:8000/api/token/profile/" + id.user_id + "/"
+      let url = process.env.REACT_APP_BASE_URL + "token/profile/" + id.user_id + "/"
       axios.post(url,
         {
           "user": id.user_id,

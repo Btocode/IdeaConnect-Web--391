@@ -51,7 +51,7 @@ export const AuthProvider = ({children}) =>{
   let loginUser = async (e ) =>{
     e.preventDefault()
     // console.log(e.target.email.value)
-      let response = await fetch("http://127.0.0.1:8000/api/token/",{
+      let response = await fetch(process.env.REACT_APP_BASE_URL + "token/",{
         method : "POST",
 
         headers:{
