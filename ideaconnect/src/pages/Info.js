@@ -23,7 +23,7 @@ const Info = () => {
 
       // const axios = require('axios')
       let url = "http://127.0.0.1:8000/api/token/profile/" + id.user_id + "/"
-      axios.put(url,
+      axios.post(url,
         {
           "user": id.user_id,
           "gender": gender,
@@ -41,7 +41,7 @@ const Info = () => {
         }
       )
         .then(function (response) {
-          if (response.statusText === 'OK') {
+          if (response.statusText === 'Created') {
             navigate("/profile")
           }
           else {
@@ -56,7 +56,7 @@ const Info = () => {
     <main>
       <Navbar />
       <div className="w-screen h-screen flex flex-col  items-center">
-        <div className="content flex justify-center items-center w-8/12 mb-24">
+        <div className="content flex justify-center items-center w-full mb-24">
           <div className="w-full flex flex-col items-center" >
             <div className="top mt-20">
               <h2 className="text-left text-3xl sm:text-center mb-6">Update User Information</h2>

@@ -8,7 +8,7 @@ const intro = (props) => {
     <div>
 
       <div className="topd flex items-center px-5 py-2 mt-4  rounded-t-2xl">
-        <div className="w-3/12 h-25">
+        <div className="w-5/12 h-25">
           <img
             className="rounded-full h-20 w-20"
             src={profile}

@@ -106,7 +106,7 @@ class IdeaView2(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelM
 #         user = profile.user
 #         ideas = Idea.objects.filter(author = user).order_by('-postingTime')
 
-class UserProfileView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin):
+class UserProfileView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,DestroyModelMixin,CreateModelMixin):
     queryset = UserInfo.objects.all()
     serializer_class = ProfileSerializer
 
@@ -116,6 +116,8 @@ class UserProfileView(GenericAPIView,RetrieveModelMixin,UpdateModelMixin,Destroy
         return self.update(request, *args, **kwargs)
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 class ProfilesView(GenericAPIView,ListModelMixin,CreateModelMixin):
     queryset = UserInfo.objects.all()

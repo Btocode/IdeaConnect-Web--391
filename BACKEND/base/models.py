@@ -9,7 +9,7 @@ class UserInfo(models.Model):
     ('Female','Female'),
     ('Others','Others'),
   )
-  profile_picture = models.ImageField(upload_to = 'uploads/profile_pictures',default = 'uploads/profile_pictures/default.png',blank = True,)
+  profile_picture = models.ImageField(upload_to = 'uploads/profile_pictures',default = 'uploads/profile_pictures/default.png',blank = True,null=True)
   gender = models.CharField(max_length = 10, null=True,choices=GENDER)
   age = models.IntegerField(null=True)
   jobTitle = models.CharField(max_length = 50, null=True,default="please update jobtitle")
