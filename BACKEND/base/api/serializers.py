@@ -49,6 +49,18 @@ class UpvoteSerializer(serializers.ModelSerializer):
         model = Idea
         fields = ['upvotes','downvotes','pk']
 
+
+class SuggestionSerializer(serializers.ModelSerializer):
+    class Meta():
+        model = SuggestionClass
+        fields = ('user','ideaId','content',)
+    def to_representation(self,instance):
+        representation = super().to_representation(instance)
+        representation['first_name'] = instance.user.first_name
+        representation['last_name'] = instance.user.last_name
+        return representation
+
+
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserInfo

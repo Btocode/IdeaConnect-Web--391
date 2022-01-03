@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, {useEffect, useState, useContext } from 'react'
 import AuthContext from '../context/AuthContext';
 import dp from "../images/dp.png";
 import axios from 'axios';
@@ -46,6 +46,26 @@ const CreatePost = () => {
 
   }
 
+  const [profile,setProfile] = useState([])
+  
+  let url1 = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
+  useEffect(()=>{
+    axios.get(url1)
+    .then(response => {
+      // console.log(response.data)
+      return response.data
+      
+    }).then(json => {
+      setProfile(json)
+      
+
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+  },[])
+
 
 
 
@@ -68,7 +88,7 @@ const CreatePost = () => {
                   <div className="leftitems flex items-center w-1/2 ">
                     <img className="h-10 w-10 rounded-full" src={dp} alt="" />
 
-                    <p className="ml-3">Afsan Saeed</p>
+                    <p className="ml-3"> {profile.first_name + " " +profile.last_name}</p>
                   </div>
                   <div className="rightitems flex justify-end w-1/2 mr-3">
                     <input type="submit" value="Submit" className='bg-upgreen h-8 px-4 py-1 rounded-lg text-white '  />

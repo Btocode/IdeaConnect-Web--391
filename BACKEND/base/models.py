@@ -19,6 +19,7 @@ class UserInfo(models.Model):
   resume = models.CharField(max_length = 200, null=True)
   github = models.CharField(max_length = 200, null=True)
   bio = models.CharField(max_length=300,null = True,default="Tell us something about you")
+
   
 
   def __str__(self):
@@ -43,7 +44,7 @@ class Idea(models.Model):
     return self.ideaTitle
   
   class Meta:
-        ordering = ['ideaTags']
+        ordering = ['-postingTime']
 
 class SuggestionClass(models.Model):
   user = models.ForeignKey(User, on_delete = models.CASCADE)
@@ -54,4 +55,7 @@ class SuggestionClass(models.Model):
     return self.user.username
 
 
+# class UserFollowing(models.Model):
+#     user_id = models.ForeignKey("User", related_name="following")
 
+#     following_user_id = models.ForeignKey("User", related_name="followers")

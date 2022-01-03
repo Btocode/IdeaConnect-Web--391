@@ -2,7 +2,6 @@ import Post from '../components/TrendingPost';
 import Sidebar from '../components/TrendingSidebar'
 import Navbar from "../components/Navbar"
 import axios from 'axios'
-import React, { useState, useEffect } from 'react';
 import { Component } from 'react/cjs/react.development';
 
 

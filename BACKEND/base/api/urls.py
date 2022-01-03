@@ -1,6 +1,6 @@
 from django.urls import path 
 from . import views
-from .views import MyTokenObtainPairView,CreateUserView,IdeaView,IdeaView2,ManipulateUserView,UserProfileView,ProfilesView,UpvoteView
+from .views import MyTokenObtainPairView,CreateUserView,IdeaView,IdeaView2,ManipulateUserView,UserProfileView,ProfilesView,UpvoteView,SuggestionsGroup1,SuggestionsGroup2
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -18,5 +18,8 @@ urlpatterns = [
     path('token/profile/<int:pk>/',UserProfileView.as_view()),
     path('token/profiles/',ProfilesView.as_view()),
     path('token/idea/upvote/<int:pk>/',UpvoteView.as_view()),
+    path('token/idea/suggestions/', views.SuggestionsGroup1.as_view(), name="api-overview"),
+    path('token/idea/suggestion/<int:pk>', views.SuggestionsGroup2.as_view(), name="api-overview"),
+
     
 ]
