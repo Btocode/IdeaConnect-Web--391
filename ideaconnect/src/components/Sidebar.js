@@ -1,8 +1,8 @@
-import React, { useContext,useState,useEffect } from 'react'
-// import profile from '../images/dp.png'
-import {Link} from "react-router-dom"
-import AuthContext from '../context/AuthContext'
 import axios from 'axios'
+import React, { useContext, useEffect, useState } from 'react'
+// import profile from '../images/dp.png'
+import { Link } from "react-router-dom"
+import AuthContext from '../context/AuthContext'
 
 
 const Sidebar = () => {
@@ -11,7 +11,7 @@ const Sidebar = () => {
 const [email,setEmail] = useState("")
   
 
-  let url = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
+  let url = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url)
     .then(response => {

@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from 'react'
-import Profile from "../components/UserIntro"
-import axios from 'axios'
-import Navbar from '../components/Navbar'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Profile from "../components/UserIntro";
 
 
 
@@ -15,7 +15,7 @@ const ProfielView = ()=> {
 
   const {id} = useParams()
   console.log(id);
-  let url = 'http://127.0.0.1:8000/api/token/profile/' + id + "/"
+  let url = process.env.REACT_APP_BASE_URL + 'token/profile/' + id + "/"
   console.log(url);
   useEffect(()=>{
     axios.get(url)
@@ -36,7 +36,7 @@ const ProfielView = ()=> {
 
   const [profile,setProfile] = useState([])
   
-  let url1 = 'http://127.0.0.1:8000/api/token/manipulate/' + id + "/"
+  let url1 = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id + "/"
   useEffect(()=>{
     axios.get(url1)
     .then(response => {

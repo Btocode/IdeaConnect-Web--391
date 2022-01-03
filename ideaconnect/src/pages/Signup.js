@@ -19,7 +19,7 @@ const Signup = () => {
     if ((username !== "") &&  (password1 !== "") &&  (password2 !== "")){
       if(password1 === password2){
         // const axios = require('axios')
-        axios.post('http://127.0.0.1:8000/api/token/create/',
+        axios.post(process.env.REACT_APP_BASE_URL + 'token/create/',
         {
          
           "first_name": firstName,

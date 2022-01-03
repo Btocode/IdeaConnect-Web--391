@@ -1,7 +1,6 @@
-import { createContext,useState,} from 'react';
-import jwt_decode from 'jwt-decode'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import jwt_decode from 'jwt-decode';
+import { createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext()
 
 export default AuthContext;
@@ -26,7 +25,7 @@ export const AuthProvider = ({children}) =>{
   const navigate = useNavigate()
 
 // get user profile infos
-//   let url = 'http://127.0.0.1:8000/api/token/profile/' + id.user_id + "/"
+//   let url = process.env.REACT_APP_BASE_URL + 'token/profile/' + id.user_id + "/"
 //   let userProfileInfo =()=>{
 //     axios.get(url)
 //     .then(response => {

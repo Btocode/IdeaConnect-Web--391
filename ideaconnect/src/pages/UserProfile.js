@@ -1,8 +1,8 @@
-import React, { useContext,useState,useEffect } from 'react'
-import Profile from "../components/intro"
 import axios from 'axios'
-import AuthContext from '../context/AuthContext'
+import React, { useContext, useEffect, useState } from 'react'
+import Profile from "../components/intro"
 import Navbar from '../components/Navbar'
+import AuthContext from '../context/AuthContext'
 
 
 
@@ -15,7 +15,7 @@ const UserProfile = ()=> {
 
 
   const {id} = useContext(AuthContext)
-  let url = 'http://127.0.0.1:8000/api/token/profile/' + id.user_id + "/"
+  let url = process.env.REACT_APP_BASE_URL + 'token/profile/' + id.user_id + "/"
   console.log(url);
   useEffect(()=>{
     axios.get(url)
@@ -36,7 +36,7 @@ const UserProfile = ()=> {
 
   const [profile,setProfile] = useState([])
   
-  let url1 = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
+  let url1 = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url1)
     .then(response => {

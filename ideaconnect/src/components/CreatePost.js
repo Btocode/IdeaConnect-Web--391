@@ -1,8 +1,8 @@
-import React, {useEffect, useState, useContext } from 'react'
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import dp from "../images/dp.png";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -21,7 +21,7 @@ const CreatePost = () => {
     
     if ((ideaTitle !== "") && (ideaDesc !== "") && (ideaTags !== "")) {
       
-      let response = axios.post('http://127.0.0.1:8000/api/token/ideas/',
+      let response = axios.post(process.env.REACT_APP_BASE_URL + 'token/ideas/',
         {
           "ideaTitle": ideaTitle,
           "ideaDesc": ideaDesc,
@@ -48,7 +48,7 @@ const CreatePost = () => {
 
   const [profile,setProfile] = useState([])
   
-  let url1 = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
+  let url1 = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url1)
     .then(response => {

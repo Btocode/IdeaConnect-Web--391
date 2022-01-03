@@ -1,11 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
-import Comment from '../components/Comment';
-import Navbar from '../components/Navbar';
-import dp from "../images/dp.png";
 import axios from 'axios';
-import AuthContext from '../context/AuthContext';
-import Post from '../components/Post'
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 
 const ViewPost = () => {
@@ -21,7 +17,7 @@ const ViewPost = () => {
 
 
   // const { id } = useContext(AuthContext)
-  let url = 'http://127.0.0.1:8000/api/token/idea/' + id + "/"
+  let url = process.env.REACT_APP_BASE_URL + 'token/idea/' + id + "/"
   // console.log(url);
   useEffect(() => {
     axios.get(url)

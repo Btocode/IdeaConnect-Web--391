@@ -1,8 +1,8 @@
-import Post from '../components/TrendingPost';
-import Sidebar from '../components/TrendingSidebar'
-import Navbar from "../components/Navbar"
-import axios from 'axios'
+import axios from 'axios';
 import { Component } from 'react/cjs/react.development';
+import Navbar from "../components/Navbar";
+import Post from '../components/TrendingPost';
+import Sidebar from '../components/TrendingSidebar';
 
 
 
@@ -14,7 +14,7 @@ class Trending extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:8000/api/token/ideas/')
+    axios.get(process.env.REACT_APP_BASE_URL + 'token/ideas/')
       .then(response => {
         this.setState({ ideas: response.data })
 

@@ -1,8 +1,8 @@
-import React,{ useContext,useState,useEffect } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import axios from 'axios'
-import AuthContext from '../context/AuthContext'
 import '../App.css';
+import AuthContext from '../context/AuthContext';
 
 
 
@@ -15,7 +15,7 @@ const Navbar = (props) => {
   const {id} = useContext(AuthContext)
   const [firstName,setFirstName] = useState("")
   const [lastName,setLastName] = useState("")
-  let url = 'http://127.0.0.1:8000/api/token/manipulate/' + id.user_id + "/"
+  let url = process.env.REACT_APP_BASE_URL + 'token/manipulate/' + id.user_id + "/"
   useEffect(()=>{
     axios.get(url)
     .then(response => {

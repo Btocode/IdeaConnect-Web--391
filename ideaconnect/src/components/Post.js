@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import axios from 'axios';
+import React, { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 // import Comment from './Comment';
 import dp from "../images/dp.png";
-import axios from 'axios';
-import { useNavigate,Link } from 'react-router-dom';
 
 
 const Post = (props) => {
@@ -27,7 +27,7 @@ const Post = (props) => {
   }
 
   useEffect(() => {
-    url = 'http://127.0.0.1:8000/api/token/idea/upvote/' + props.id + "/"
+    url = process.env.REACT_APP_BASE_URL + 'token/idea/upvote/' + props.id + "/"
     axios.get(url)
       .then(response => {
         upvotes.push(response.data.upvotes)

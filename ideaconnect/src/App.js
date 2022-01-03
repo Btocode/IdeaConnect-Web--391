@@ -16,13 +16,13 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://127.0.0.1:8000/api/token/ideas/')
+    axios.get(process.env.REACT_APP_BASE_URL + 'token/ideas/')
       .then(response => {
         this.setState({ idea: response.data })
 
       })
       .catch(error => {
-        console.log("Error in App Js")
+        console.log("Error in AppJs")
       })
   }
 
