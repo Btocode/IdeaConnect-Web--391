@@ -22,7 +22,7 @@ class App extends Component {
 
       })
       .catch(error => {
-        console.log("Error in AppJs")
+        console.log("Error in App Js")
       })
   }
 
