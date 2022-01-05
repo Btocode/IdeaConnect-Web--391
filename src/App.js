@@ -29,26 +29,7 @@ class App extends Component {
 
   
   render() {
-    // let homepage = null
-    // // let createPost = <CreatePost/>
-    //   homepage = (
-    //     <div className="content flex w-full">
-    //       <div className="sidebar md:block hidden">
-    //         <Sidebar />
-    //       </div>
-    //       <div className="posts w-full flex flex-col overflow-y-auto">
-    //         {this.state.idea.map(idea => {
-
-    //           return <div className="flex justify-center mt-5">
-    //             <Post name={idea.user.firstName + idea.user.lastName} description={idea.ideaDesc} title={idea.ideatitle} tags={idea.ideatags} upvotes={idea.upVotes} downvotes={idea.downVotes} suggestions={idea.user} key={idea.ideaId} />
-    //           </div>
-    //         })
-    //         }
-    //       </div>
-    //     </div>
-    //   )
-
-    // console.log(this.state.idea[0]);
+ 
 
     const homepage = (
       

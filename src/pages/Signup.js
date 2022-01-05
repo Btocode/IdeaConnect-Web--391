@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import wave1 from "../images/wave.svg";
 import wave2 from "../images/wave2.svg";
-import REACT_APP_BASE_URL from "../utils/URLs"
+import REACT_APP_BASE_URL from "../utils/URLs";
 
 
 const Signup = () => {
@@ -32,11 +32,11 @@ const Signup = () => {
       }
         )
         .then(function (response) {
-          if (response.statusText === 'Created') {
+          if (response.status === 201) {
             navigate("/login")
           }
           else{
-            console.log("Error found")
+            console.log(response)
           }
         })
       }

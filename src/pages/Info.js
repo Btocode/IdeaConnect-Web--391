@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import AuthContext from '../context/AuthContext';
-import REACT_APP_BASE_URL from "../utils/URLs"
+import REACT_APP_BASE_URL from "../utils/URLs";
 
 
 
@@ -43,7 +43,7 @@ const Info = () => {
         }
       )
         .then(function (response) {
-          if (response.statusText === 'Created') {
+          if (response.status === 201) {
             navigate("/profile")
           }
           else {
