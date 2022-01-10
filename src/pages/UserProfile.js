@@ -79,7 +79,7 @@ const UserProfile = ()=> {
           <h2>Programming Language: <span className='text-xl italic text-downred'>{info.programming}</span></h2>
           <h2>Spoken Language: <span className='text-xl italic text-downred'>{info.languageKnown}</span></h2>
           </div>
-
+        
         </div>
         </div>
       </div>
