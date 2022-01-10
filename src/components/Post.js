@@ -98,11 +98,7 @@ const Post = (props) => {
 
     }
     vote()
-    // console.log("data:", data)
-    // Ending
-
-
-    // console.log(upvotes[0], "testing")
+    alert("Please reload to see the changes")
   }
 
 
@@ -157,11 +153,8 @@ const Post = (props) => {
 
     }
     downVote()
-    // console.log("data:", data)
-    // Ending
 
-
-    console.log(upvotes[0], "testing")
+    alert("Please reload to see the changes")
   }
   // console.log(url);
   // useEffect(()=>{
