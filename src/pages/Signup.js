@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import wave1 from "../images/wave.svg";
 import wave2 from "../images/wave2.svg";
 import REACT_APP_BASE_URL from "../utils/URLs";
 
@@ -18,10 +17,10 @@ const Signup = () => {
   // const [gender,setGender] = useState('')
 
   const registrationRequest = () => {
-    if ((username !== "") &&  (password1 !== "") &&  (password2 !== "")){
+    if ((username !== "") &&  (password1 !== "") &&  (password2 !== "") &&  (firstName !== "") &&  (lastName !== "")){
       if(password1 === password2){
         // const axios = require('axios')
-        axios.post(REACT_APP_BASE_URL + 'token/create/',
+        let resp =  axios.post(REACT_APP_BASE_URL + 'token/create/',
         {
          
           "first_name": firstName,
@@ -33,12 +32,20 @@ const Signup = () => {
         )
         .then(function (response) {
           if (response.status === 201) {
+            alert("Your Account has Created Successfully")
             navigate("/login")
           }
-          else{
-            console.log(response)
-          }
         })
+        .catch(function (error) {
+          if (error.response.status === 400 ) {
+            alert("Username Already exist, Try different username")
+          }
+          else{
+            console.log(error);
+          }
+          
+        });
+
       }
       else{
         alert("Please check your password")
@@ -84,7 +91,7 @@ const Signup = () => {
       </div>
       <div className="bottomdiv fixed w-full bottom-0" >
         <div className="inner max-h-56">
-        <img className = "fixed" src={wave1} alt="" />
+       
         <img src={wave2} alt="" />
         </div>
        

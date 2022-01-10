@@ -65,7 +65,6 @@ const Login = () => {
       </form>
       <div className="bottomdiv fixed w-full bottom-0" >
         <div className="inner max-h-56">
-          <img className="fixed" src={wave1} alt="" />
           <img src={wave2} alt="" />
         </div>
       </div>
